@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<RadzenStack Orientation="Orientation.Vertical" Gap="4px">
+    <RadzenTextBox @bind-Value="@cliente.Nome" Placeholder="Nome" />
+    <RadzenNumeric @bind-Value="@cliente.Idade" Placeholder="XX" />
+    <RadzenTextBox @bind-Value="@cliente.Email" Placeholder="user@email.com" />
+    <RadzenButton Click="@Envia" Text="Dark" ButtonStyle="ButtonStyle.Dark" />
+</RadzenStack>
+
+@code {
+
+    List<Usuario> usuarios = new();
+    Usuario cliente = new ();
+
+    void Envia()
+    {
+        Usuario clienteCopia = new();
+
+        clienteCopia.Nome = cliente.Nome;
+        clienteCopia.Idade =  cliente.Idade;
+        clienteCopia.Email = cliente.Email;
+
+        usuarios.Add(clienteCopia);
+    }
+}
